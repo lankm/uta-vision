@@ -1,3 +1,7 @@
+# remove warning
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
+
 # import necessary packages
 from pyimagesearch.utils import get_class_idx
 from keras.applications import ResNet50

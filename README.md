@@ -20,8 +20,8 @@ The code of this project followed a tutorial from https://pyimagesearch.com/2020
 
 - Classify an image normally:
 
-    python .\predict_normal.py --image pig.jpg
+    python .\predict_normal.py -i img/good/hog.jpg
 
 - Generate, save, and classify an adversarial image:
 
-    python .\generate_basic_adversary.py --input pig.jpg --output bad_pig.jpg --class-idx 341
+    python .\generate_basic_adversary.py -i img/good/hog.jpg -o img/bad/hog.jpg -c 341

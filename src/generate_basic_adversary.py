@@ -1,3 +1,7 @@
+# remove warning
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
+
 # import necessary packages
 from keras.optimizers import Adam
 from keras.applications import ResNet50
