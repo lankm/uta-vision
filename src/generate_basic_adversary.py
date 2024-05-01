@@ -1,6 +1,6 @@
-# remove warning
+# remove warnings
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2' 
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 # import necessary packages
 from keras.optimizers import Adam
@@ -25,8 +25,7 @@ def preprocess_image(image):
 
 def clip_eps(tensor, eps):
 	# clip the values of the tensor to a given range and return it
-	return tf.clip_by_value(tensor, clip_value_min=-eps,
-		clip_value_max=eps)
+	return tf.clip_by_value(tensor, clip_value_min=-eps, clip_value_max=eps)
 
 def generate_adversaries(model, baseImage, delta, classIdx, steps=50):
 	# iterate over the number of steps
@@ -50,8 +49,7 @@ def generate_adversaries(model, baseImage, delta, classIdx, steps=50):
 			# check to see if we are logging the loss value, and if
 			# so, display it to our terminal
 			if step % 5 == 0:
-				print("step: {}, loss: {}...".format(step,
-					loss.numpy()))
+				print("step: {}, loss: {}...".format(step, loss.numpy()))
 				
 		# calculate the gradients of loss with respect to the
 		# perturbation vector
@@ -114,14 +112,12 @@ predictions = model.predict(preprocessedImage)
 predictions = decode_predictions(predictions, top=3)[0]
 label = predictions[0][1]
 confidence = predictions[0][2] * 100
-print("[INFO] label: {} confidence: {:.2f}%".format(label,
-	confidence))
+print("[INFO] label: {} confidence: {:.2f}%".format(label, confidence))
 
 # draw the top-most predicted label on the adversarial image along
 # with the confidence score
 text = "{}: {:.2f}%".format(label, confidence)
-cv2.putText(adverImage, text, (3, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
-	(0, 255, 0), 2)
+cv2.putText(adverImage, text, (3, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
 # show the output image
 cv2.imshow("Output", adverImage)
